@@ -1,0 +1,8 @@
+
+node_modules
+dist
+auth.js
+tmp/*
+!tmp/.gitkeep
+coverage
+requisitos.md
