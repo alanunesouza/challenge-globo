@@ -9,8 +9,8 @@
     "baseUrl": "./src",
     "allowJs": true,
     "paths": {
-      "@modules/*": [
-        "modules/*"
+      "@models/*": [
+        "models/*"
       ],
       "@config/*": [
         "config/*"
