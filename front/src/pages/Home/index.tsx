@@ -1,9 +1,14 @@
 import React from 'react';
 
-// import { Container } from './styles';
+import { Container, Button } from './styles';
+import history from '../../services/history';
 
 const Home: React.FC = () => {
-  return <div />;
+  return (
+    <Container>
+      <Button onClick={() => history.push('/votacao')}>Entrar na votação</Button>
+    </Container>
+  );
 }
 
 export default Home;

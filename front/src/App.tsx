@@ -1,12 +1,14 @@
 
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+
 import GlobalStyle from './styles/global';
+import history from './services/history';
 
 import Routes from './routes';
 
 const App: React.FC = () => (
-  <Router>
+  <Router history={history}>
     <Routes />
     <GlobalStyle />
   </Router>
