@@ -1,9 +1,11 @@
 import React from 'react';
 
 import { Container, Button } from './styles';
-import history from '../../services/history';
+import { useHistory } from 'react-router-dom';
 
 const Home: React.FC = () => {
+  const history = useHistory();
+
   return (
     <Container>
       <Button onClick={() => history.push('/votacao')}>Entrar na votação</Button>
