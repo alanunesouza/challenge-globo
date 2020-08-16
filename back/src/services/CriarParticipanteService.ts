@@ -1,6 +1,6 @@
-import Participante from "@models/Participante";
+import Participante from '@models/Participante';
 
-import { getRepository } from "typeorm";
+import { getRepository } from 'typeorm';
 
 interface Request {
   nome: string;

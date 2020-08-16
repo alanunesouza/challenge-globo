@@ -10,7 +10,7 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.div`
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 1);
   color: #FFF;
   height: 70px;
   width: 100%;
@@ -21,6 +21,7 @@ export const Header = styled.div`
   position: fixed;
   font-weight: 500;
   font-size: 24px;
+  z-index: 5;
 `;
 
 export const Button = styled.button`

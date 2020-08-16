@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import VotarNoParedaoService from 'services/VotarNoParedaoService';
+import VotarNoParedaoService from '@services/VotarNoParedaoService';
 
 const votosRouter = Router();
 

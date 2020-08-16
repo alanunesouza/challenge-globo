@@ -1,7 +1,6 @@
-import Paredao from "@models/Paredao";
+import Paredao from '@models/Paredao';
 
-import { getRepository } from "typeorm";
-
+import { getRepository } from 'typeorm';
 
 class CriarParedaoService {
   public async execute(): Promise<Paredao> {
@@ -12,7 +11,9 @@ class CriarParedaoService {
     });
 
     if (checkParedaoActive) {
-      throw new Error('Já existe um paredão em aberto. Para criar um novo paredão, é necessário que o outro seja encerrado.');
+      throw new Error(
+        'Já existe um paredão em aberto. Para criar um novo paredão, é necessário que o outro seja encerrado.',
+      );
     }
 
     const paredao = paredaosRepository.create();

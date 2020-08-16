@@ -1,8 +1,7 @@
-import Paredao from "@models/Paredao";
+import Paredao from '@models/Paredao';
 
-import { getRepository } from "typeorm";
-import Participante from "@models/Participante";
-
+import { getRepository } from 'typeorm';
+import Participante from '@models/Participante';
 
 class BuscarParedaoAtivoService {
   public async execute(): Promise<any> {
@@ -18,7 +17,7 @@ class BuscarParedaoAtivoService {
     }
 
     const participantes = await participantesRepository.find({
-      where: { id_paredao: paredaoAtivo.id }
+      where: { id_paredao: paredaoAtivo.id },
     });
 
     if (participantes.length < 2) {

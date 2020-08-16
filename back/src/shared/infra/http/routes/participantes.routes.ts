@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import CriarParticipanteService from 'services/CriarParticipanteService';
-import AddParticipanteParedaoService from 'services/AddParticipanteParedaoService';
+import CriarParticipanteService from '@services/CriarParticipanteService';
+import AddParticipanteParedaoService from '@services/AddParticipanteParedaoService';
 
 const participantesRouter = Router();
 
@@ -13,15 +13,13 @@ participantesRouter.post('/', async (request, response) => {
     const participante = await criarParticipante.execute({
       nome,
       data_nasc,
-    })
+    });
 
     return response.json(participante);
   } catch (error) {
     return response.status(400).json({ error: error.message });
   }
 });
-
-
 
 participantesRouter.put('/', async (request, response) => {
   try {
@@ -31,7 +29,7 @@ participantesRouter.put('/', async (request, response) => {
 
     const paredao = await addParticipanteParedao.update({
       id_participante,
-    })
+    });
 
     return response.json(paredao);
   } catch (error) {

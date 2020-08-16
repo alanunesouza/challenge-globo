@@ -71,7 +71,7 @@ export const Button = styled.button`
   font-family: opensans-bold,Helvetica Neue,Helvetica,sans-serif;
   user-select: none;
   width: 15%;
-  height: 60px;
+  min-height: 60px;
   margin: 25px;
 
   :hover {

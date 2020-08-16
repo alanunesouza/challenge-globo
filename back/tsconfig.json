@@ -17,6 +17,9 @@
       ],
       "@shared/*": [
         "shared/*"
+      ],
+      "@services/*": [
+        "services/*"
       ]
     },
     "esModuleInterop": true,
@@ -24,7 +27,11 @@
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true
   },
+  "include": [
+    "src",
+  ],
   "exclude": [
+    "node_modules",
     "docs/*",
     "coverage/*",
     "jest.config.js",

@@ -6,6 +6,7 @@ import { Container, Content, Participante, ParticipanteImg, ParticipanteName, Qu
 
 import masculinoPNG from '../../assets/images/masculino.png';
 import femininoPNG from '../../assets/images/feminino.png';
+import { useHistory } from 'react-router-dom';
 
 interface Participante {
   nome: string,
@@ -21,15 +22,24 @@ interface Paredao {
 const Votacao: React.FC = () => {
   const [paredao, setParedao] = useState<Paredao | null>(null);
   const [activeButton, setActiveButton] = useState<Boolean>(false);
-  const [participanteSelecionado, setParticipanteSelecionado] = useState<Participante | null>();
+  const [participanteSelecionado, setParticipanteSelecionado] = useState<Participante>();
+
+  const history = useHistory();
 
   useEffect(() => {
     api.get('/paredoes')
-      .then(response => {
-        setParedao(response.data);
-      })
+      .then(response => setParedao(response.data))
       .catch(err => console.log(err));
   }, [])
+
+  const handleSubmit = () => {
+    const body = {
+      id_participante: participanteSelecionado?.id
+    };
+
+    api.post('/votos', body)
+      .then(response => history.push({ pathname:'/resultado', state: { data: response.data } }))
+  }
 
   return (
     <Container>
@@ -57,7 +67,7 @@ const Votacao: React.FC = () => {
         />
       )}
 
-      <Button disabled={!activeButton}>Votar</Button>
+      <Button disabled={!activeButton} onClick={handleSubmit}>Votar</Button>
     </Container>
   );
 }

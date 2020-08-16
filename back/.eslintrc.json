@@ -17,10 +17,12 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2018,
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": "./tsconfig.json"
   },
   "plugins": ["prettier"],
   "rules": {
+    "import/no-unresolved": [ 2, { "caseSensitive": false }],
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
