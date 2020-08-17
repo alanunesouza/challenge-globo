@@ -1,13 +1,13 @@
-# Desafio - Votação Big Brother Brasil - GLOBO
+<h1 align="center">
+  Desafio - Votação Big Brother Brasil - Globo
+</h1> 
 
 ![](bbb.gif)
-
-====================
 
 <p align="center">
   <a href="#rocket-sobre-o-desafio">Sobre o desafio</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#hammer-instalação">Instalação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-licença">Licença</a>
+  <a href="#memo-observações">Observações</a>
 </p>
 
 ## :rocket: Sobre o desafio
@@ -70,3 +70,11 @@ Abra um novo terminal e execute os comandos abaixo:
 cd front && npm install && npm run start
 ```
 
+## :memo: Observações
+
+Para a visualização de um paredão com seus respectivos participantes, é necessário seguir os passos:
+
+- Criação de Participantes;
+- Criação de Paredão;
+- Inclusão de Participantes ao Paredão;
+- Start do Paredão;

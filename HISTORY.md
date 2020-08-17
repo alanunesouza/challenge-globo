@@ -15,6 +15,12 @@
 
 - Infelizmente, optei por deixar um layout bem básico, devido ao tempo disponível para concluir o projeto.
 
+
+====================
+#### Mock
+
+- Queria deixar um mock default do banco, para assim que vocês subirem a aplicação, já estar tudo ok... utizando seeds no TypeORM, mas acabei tendo alguns problemas e não consegui concluir. 
+
 ====================
 #### Segurança para os votos
 
