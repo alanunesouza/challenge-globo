@@ -18,7 +18,6 @@ interface Paredao {
   ativo: boolean,
 }
 
-
 const Votacao: React.FC = () => {
   const [paredao, setParedao] = useState<Paredao | null>(null);
   const [activeButton, setActiveButton] = useState<Boolean>(false);

@@ -1,7 +1,15 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, JoinColumn, OneToOne } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  JoinColumn,
+  OneToOne,
+} from 'typeorm';
 
-import Participante from "./Participante";
-import Paredao from "./Paredao";
+import Participante from './Participante';
+import Paredao from './Paredao';
 
 @Entity('votos')
 class Voto {
@@ -11,14 +19,14 @@ class Voto {
   @Column()
   id_participante: string;
 
-  @OneToOne(type => Participante)
+  @OneToOne(() => Participante)
   @JoinColumn({ name: 'id_participante' })
   participante: Participante;
 
   @Column()
   id_paredao: string;
 
-  @OneToOne(type => Paredao)
+  @OneToOne(() => Paredao)
   @JoinColumn({ name: 'id_paredao' })
   paredao: Participante;
 
