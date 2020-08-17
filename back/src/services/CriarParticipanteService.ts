@@ -2,13 +2,13 @@ import Participante from '@models/Participante';
 
 import { getRepository } from 'typeorm';
 
-interface Request {
+interface IRequest {
   nome: string;
   data_nasc: Date;
 }
 
 class CriarParticipanteService {
-  public async execute({ nome, data_nasc }: Request): Promise<Participante> {
+  public async execute({ nome, data_nasc }: IRequest): Promise<Participante> {
     const participantesRepository = getRepository(Participante);
 
     const checkParticipanteExists = await participantesRepository.findOne({

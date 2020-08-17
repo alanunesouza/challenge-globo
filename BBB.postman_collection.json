@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "e284c92f-249e-47dc-8b72-1f963e222d09",
+		"name": "BBB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Criar Participante",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nome\": \"Gilmar Oliveira\",\n    \"data_nasc\": \"01/03/1980\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3334/participantes",
+					"host": [
+						"localhost"
+					],
+					"port": "3334",
+					"path": [
+						"participantes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Paredão",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:3334/paredoes",
+					"host": [
+						"localhost"
+					],
+					"port": "3334",
+					"path": [
+						"paredoes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adicionar Participante ao Paredão",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id_participante\": \"e001b970-0a51-49ea-ba8e-d7588b5de49d\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3334/participantes",
+					"host": [
+						"localhost"
+					],
+					"port": "3334",
+					"path": [
+						"participantes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Votar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id_participante\": \"1bfe7386-6398-4064-9469-b3f05975944c\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3334/votos",
+					"host": [
+						"localhost"
+					],
+					"port": "3334",
+					"path": [
+						"votos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BuscarParedaoAtivoIniciado",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3334/paredoes",
+					"host": [
+						"localhost"
+					],
+					"port": "3334",
+					"path": [
+						"paredoes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Participantes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3334/participantes",
+					"host": [
+						"localhost"
+					],
+					"port": "3334",
+					"path": [
+						"participantes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Iniciar Paredão",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:3334/paredoes/iniciar/paredao/ce241ff4-2cff-43f8-8f47-1ce990488bea",
+					"host": [
+						"localhost"
+					],
+					"port": "3334",
+					"path": [
+						"paredoes",
+						"iniciar",
+						"paredao",
+						"ce241ff4-2cff-43f8-8f47-1ce990488bea"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Encerrar Paredão",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:3334/paredoes/encerrar/paredao/ce241ff4-2cff-43f8-8f47-1ce990488bea",
+					"host": [
+						"localhost"
+					],
+					"port": "3334",
+					"path": [
+						"paredoes",
+						"encerrar",
+						"paredao",
+						"ce241ff4-2cff-43f8-8f47-1ce990488bea"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

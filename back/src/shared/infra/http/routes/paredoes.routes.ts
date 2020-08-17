@@ -1,27 +1,60 @@
 import { Router } from 'express';
 
-import CriarParedaoService from '@services/CriarParedaoService';
-import BuscarParedaoAtivoService from '@services/BuscarParedaoAtivoService';
-import BuscarResultadoDoParedaoService from '@services/BuscarResultadoDoParedaoService';
+import CriarParedao from '@services/CriarParedaoService';
+import IniciarParedao from '@services/IniciarParedaoService';
+import EncerrarParedao from '@services/EncerrarParedaoService';
+import BuscarParedaoAtivoIniciado from '@services/BuscarParedaoAtivoIniciadoService';
+import BuscarResultadoDoParedao from '@services/BuscarResultadoDoParedaoService';
 
-const paredaosRouter = Router();
+const paredoesRouter = Router();
 
-
-paredaosRouter.post('/', async (request, response) => {
+paredoesRouter.post('/', async (request, response) => {
   try {
-    const criarParedao = new CriarParedaoService();
+    const criarParedao = new CriarParedao();
 
     const paredao = await criarParedao.execute();
 
-    return response.json(paredao);
+    return response.status(201).json(paredao);
   } catch (error) {
     return response.status(400).json({ error: error.message });
   }
 });
 
-paredaosRouter.get('/', async (request, response) => {
+paredoesRouter.put(
+  '/iniciar/paredao/:id_paredao',
+  async (request, response) => {
+    try {
+      const { id_paredao } = request.params;
+      const iniciarParedao = new IniciarParedao();
+
+      const paredao = await iniciarParedao.execute({ id_paredao });
+
+      return response.json(paredao);
+    } catch (error) {
+      return response.status(400).json({ error: error.message });
+    }
+  },
+);
+
+paredoesRouter.put(
+  '/encerrar/paredao/:id_paredao',
+  async (request, response) => {
+    try {
+      const { id_paredao } = request.params;
+      const iniciarParedao = new EncerrarParedao();
+
+      const paredao = await iniciarParedao.execute({ id_paredao });
+
+      return response.json(paredao);
+    } catch (error) {
+      return response.status(400).json({ error: error.message });
+    }
+  },
+);
+
+paredoesRouter.get('/', async (request, response) => {
   try {
-    const buscarParedao = new BuscarParedaoAtivoService();
+    const buscarParedao = new BuscarParedaoAtivoIniciado();
 
     const paredao = await buscarParedao.execute();
 
@@ -31,13 +64,15 @@ paredaosRouter.get('/', async (request, response) => {
   }
 });
 
-paredaosRouter.get('/resultado', async (request, response) => {
+paredoesRouter.get('/resultado', async (request, response) => {
   try {
     const idParedao = request.query.idParedao as string;
 
-    const buscarResultadoDoParedao = new BuscarResultadoDoParedaoService();
+    const buscarResultadoDoParedao = new BuscarResultadoDoParedao();
 
-    const resultadoDoParedao = await buscarResultadoDoParedao.execute(idParedao);
+    const resultadoDoParedao = await buscarResultadoDoParedao.execute(
+      idParedao,
+    );
 
     return response.json(resultadoDoParedao);
   } catch (error) {
@@ -45,4 +80,4 @@ paredaosRouter.get('/resultado', async (request, response) => {
   }
 });
 
-export default paredaosRouter;
+export default paredoesRouter;

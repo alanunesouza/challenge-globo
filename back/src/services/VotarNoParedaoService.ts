@@ -4,18 +4,18 @@ import { getRepository } from 'typeorm';
 import Voto from '@models/Voto';
 import Paredao from '@models/Paredao';
 
-interface Request {
+interface IRequest {
   id_participante: string;
 }
 
-interface Resultado {
-  paredao: Paredao,
-  resultado: Array<Object>
-  totalDeVotos: Number,
+interface IResultado {
+  paredao: Paredao;
+  resultado: Array<Record<string, any>>;
+  totalDeVotos: number;
 }
 
 class VotarNoParedaoService {
-  public async execute({ id_participante }: Request): Promise<Resultado> {
+  public async execute({ id_participante }: IRequest): Promise<IResultado> {
     const participantesRepository = getRepository(Participante);
     const votosRepository = getRepository(Voto);
     const paredaoRepository = getRepository(Paredao);
@@ -38,7 +38,7 @@ class VotarNoParedaoService {
 
     const voto = votosRepository.create({
       id_participante,
-      id_paredao: participante.id_paredao,
+      id_paredao: paredao.id,
     });
 
     await votosRepository.save(voto);
@@ -47,24 +47,26 @@ class VotarNoParedaoService {
       where: { id_paredao: paredao.id },
     });
 
-    const resultado = await Promise.all(participantes.map(async participante => {
-      const votosParaParticipante = await votosRepository.find({
-        where: {
-          id_paredao: paredao.id,
-          id_participante: participante.id
-        }
-      });
+    const resultado = await Promise.all(
+      participantes.map(async (p) => {
+        const votosParaParticipante = await votosRepository.find({
+          where: {
+            id_paredao: paredao.id,
+            id_participante: p.id,
+          },
+        });
 
-      return {
-        participante,
-        qtdVotos: votosParaParticipante.length
-      };
-    }));
+        return {
+          participante,
+          qtdVotos: votosParaParticipante.length,
+        };
+      }),
+    );
 
     const totalDeVotos = await votosRepository.find({
       where: {
-        id_paredao: paredao.id
-      }
+        id_paredao: paredao.id,
+      },
     });
 
     return {

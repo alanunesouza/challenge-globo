@@ -12,7 +12,7 @@ votosRouter.post('/', async (request, response) => {
 
     const votos = await votarNoParedao.execute({ id_participante });
 
-    return response.json(votos);
+    return response.status(201).json(votos);
   } catch (error) {
     return response.status(400).json({ error: error.message });
   }

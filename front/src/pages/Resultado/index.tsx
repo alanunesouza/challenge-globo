@@ -36,8 +36,6 @@ const Resultado: React.FC = () => {
   useEffect(() => {
     const state  = location.state?.data;
 
-    console.log(state)
-
     if (state) {
       setResultado(state.resultado);
       setTotalVotos(state.totalDeVotos);

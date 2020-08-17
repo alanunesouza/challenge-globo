@@ -3,12 +3,12 @@ import Paredao from '@models/Paredao';
 import { getRepository } from 'typeorm';
 import Participante from '@models/Participante';
 
-interface Request {
+interface IRequest {
   id_participante: string;
 }
 
 class AddParticipanteParedaoService {
-  public async update({ id_participante }: Request): Promise<Participante> {
+  public async update({ id_participante }: IRequest): Promise<Participante> {
     const paredaosRepository = getRepository(Paredao);
     const participantesRepository = getRepository(Participante);
 
@@ -19,6 +19,12 @@ class AddParticipanteParedaoService {
     if (!paredaoActive) {
       throw new Error(
         'Não existe paredão em aberto. Para adicionar o participante, é necessária a criação de um paredão.',
+      );
+    }
+
+    if (paredaoActive.iniciado) {
+      throw new Error(
+        'Não é possível adicionar participante ao paredão que já foi iniciado.',
       );
     }
 

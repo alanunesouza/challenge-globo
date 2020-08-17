@@ -1,9 +1,17 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, BeforeInsert, OneToMany, JoinColumn } from "typeorm";
-import Paredao from "./Paredao";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  BeforeInsert,
+  OneToMany,
+  JoinColumn,
+} from 'typeorm';
+import Paredao from './Paredao';
 
 @Entity('participantes')
 class Participante {
-
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -16,10 +24,10 @@ class Participante {
   @Column()
   eliminado: boolean;
 
-  @Column()
-  id_paredao: string;
+  @Column({ type: 'uuid', name: 'id_paredao', nullable: true })
+  id_paredao?: string | null;
 
-  @OneToMany(() => Paredao, paredao => paredao.id)
+  @OneToMany(() => Paredao, (paredao) => paredao.id)
   @JoinColumn({ name: 'id_paredao' })
   participante: Participante;
 

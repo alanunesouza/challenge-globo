@@ -22,20 +22,21 @@ class BuscarResultadoDoParedaoService {
       where: { id_paredao: idParedao },
     });
 
-    const resultado = await Promise.all(participantes.map(async participante => {
-      const votosParaParticipante = await votoRepository.find({
-        where: {
-          id_paredao: idParedao,
-          id_participante: participante.id
-        }
-      });
+    const resultado = await Promise.all(
+      participantes.map(async (participante) => {
+        const votosParaParticipante = await votoRepository.find({
+          where: {
+            id_paredao: idParedao,
+            id_participante: participante.id,
+          },
+        });
 
-      return {
-        participante,
-        qtdVotos: votosParaParticipante.length
-      };
-    }));
-
+        return {
+          participante,
+          qtdVotos: votosParaParticipante.length,
+        };
+      }),
+    );
 
     return {
       ...paredao,
