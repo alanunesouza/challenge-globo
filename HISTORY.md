@@ -14,6 +14,7 @@
 #### Layout
 
 - Infelizmente, optei por deixar um layout bem básico, devido ao tempo disponível para concluir o projeto.
+- Imagens dos participantes: a ideia inicial é criar uma estrutura de armazenamento de imagens de participantes com Multer, porém isso geraria um tempo de desenolvimento e acabei deixando a imagem de dois participantes somente.
 
 
 ====================
