@@ -8,7 +8,7 @@ import BuscarResultadoDoParedao from '@services/BuscarResultadoDoParedaoService'
 
 const paredoesRouter = Router();
 
-paredoesRouter.post('/', async (request, response) => {
+paredoesRouter.post('/', async (_, response) => {
   try {
     const criarParedao = new CriarParedao();
 
@@ -52,7 +52,7 @@ paredoesRouter.put(
   },
 );
 
-paredoesRouter.get('/', async (request, response) => {
+paredoesRouter.get('/', async (_, response) => {
   try {
     const buscarParedao = new BuscarParedaoAtivoIniciado();
 

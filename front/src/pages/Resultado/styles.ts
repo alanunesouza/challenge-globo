@@ -53,7 +53,6 @@ export const ParticipanteName = styled.span`
   z-index: 3;
 `;
 
-
 export const Button = styled.button`
   background: #06aa48;
   color: #FFF;
