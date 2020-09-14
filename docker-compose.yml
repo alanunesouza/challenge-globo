@@ -1,0 +1,21 @@
+version: '3'
+services:
+  nodejs-server:
+    build:
+      context: ./back
+    ports:
+      - "3080:3080"
+    container_name: node-api
+    volumes:
+       - ./back:/usr/src/app/back
+       - /usr/src/app/back/node_modules
+  react-ui:
+    build:
+      context: ./front
+    ports:
+      - "3000:3000"
+    container_name: react-ui
+    stdin_open: true
+    volumes:
+       - ./front:/usr/src/app/front
+       - /usr/src/app/front/node_modules
